@@ -55,7 +55,7 @@ def generate_response(prompt):
         return output.strip() if output else "Nenhuma resposta gerada pelo modelo."
 
     except requests.exceptions.RequestException as e:
-        return f"Erro ao se comunicar com a API: {e}"
+        return f"Error communicating with API: {e}"
 
 # Função para processar blocos de texto do PDF com o modelo
 def process_pdf_with_ollama(pdf_path):
@@ -65,26 +65,26 @@ def process_pdf_with_ollama(pdf_path):
     # Resuma ou analise cada bloco separadamente
     consolidated_response = ""
     for i, block in enumerate(text_blocks):
-        print(f"Processando bloco {i + 1} de {len(text_blocks)}...")
-        prompt = f"Baseado no seguinte texto:\n\n{block}\n\nResuma o conteúdo ou responda a perguntas relacionadas."
+        print(f"Processing block {i + 1} of {len(text_blocks)}...")
+        prompt = f"Based on the following text:\n\n{block}\n\nSummarize content or answer related questions."
         response = generate_response(prompt)
-        consolidated_response += f"\n--- Bloco {i + 1} ---\n{response}"
+        consolidated_response += f"\n--- Block {i + 1} ---\n{response}"
 
     return consolidated_response.strip()
 
 if __name__ == "__main__":
     # Configuração do argparse para aceitar o nome do arquivo PDF como parâmetro
-    parser = argparse.ArgumentParser(description="Processar um PDF com o modelo Ollama.")
-    parser.add_argument("pdf_path", help="Caminho para o arquivo PDF a ser processado.")
+    parser = argparse.ArgumentParser(description="Process a PDF with the Ollama template with Deepseek-R1 model.")
+    parser.add_argument("pdf_path", help="Path to the PDF file to be processed.")
     args = parser.parse_args()
 
     # Verifica se o arquivo PDF existe
     if not os.path.isfile(args.pdf_path):
-        print(f"Erro: O arquivo PDF '{args.pdf_path}' não foi encontrado. Verifique o caminho.")
+        print(f"Error: The PDF file '{args.pdf_path}' not found. Check the path.")
     else:
         try:
             response = process_pdf_with_ollama(args.pdf_path)
-            print("\nResposta consolidada do modelo:")
+            print("\nConsolidated model response:")
             print(response)
         except Exception as e:
-            print(f"Erro ao processar o PDF: {e}")
+            print(f"Error processing PDF: {e}")
