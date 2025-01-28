@@ -49,7 +49,7 @@ docker exec -it ollama ollama pull deepseek-r1:1.5b
 
 Set up **Open Web UI** to interact with the model via your browser:
 
-```console
+```sh
 docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
 -p 3000:8080: Maps port 8080 of the container to port 3000 on the host.
 --add-host=host.docker.internal:host-gateway: Allows the container to access host services.
