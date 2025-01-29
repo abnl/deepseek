@@ -10,7 +10,7 @@
 
 ## DeepSeek-R1 Architecture and Deployment
 
-**DeepSeek-R1** DeepSeek-R1 is a cutting-edge AI model designed for tackling complex tasks, including logical reasoning and mathematical problem-solving. It combines **reinforcement learning (RL)** and **supervised fine-tuning** to achieve superior performance on benchmarks like AIME and MATH-500. Available in full versions (671B parameters) and distilled variants (1.5B-70B parameters), the model can run locally using tools like **Ollama**, requiring powerful GPUs or optimized hardware.
+**DeepSeek-R1** is a cutting-edge AI model designed for tackling complex tasks, including logical reasoning and mathematical problem-solving. It combines **reinforcement learning (RL)** and **supervised fine-tuning** to achieve superior performance on benchmarks like AIME and MATH-500. Available in full versions (671B parameters) and distilled variants (1.5B-70B parameters), the model can run locally using tools like **Ollama**, requiring powerful GPUs or optimized hardware.
 
 - **Architecture**: Based on Mixture-of-Experts (MoE), where each token activates 37 billion parameters, enabling advanced reasoning.
 - **Training**: Uses RL to enhance reasoning capabilities, with distillation techniques to create smaller models.
