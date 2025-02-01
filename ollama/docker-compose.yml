@@ -1,5 +1,3 @@
-version: '3.8'
-
 networks:
   ai_network:
     driver: bridge
