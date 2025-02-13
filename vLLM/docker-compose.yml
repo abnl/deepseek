@@ -1,0 +1,44 @@
+networks:
+  ai_network:
+    driver: bridge
+
+services:
+  vllm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - HF_TOKEN=${HF_TOKEN}  # Passa o token como argumento de build
+    container_name: vllm
+    ports:
+      - "8000:8000"
+    networks:
+      - ai_network
+    volumes:
+      - vllm_cache:/models  # Cache do modelo dentro do container
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    depends_on:
+      - vllm
+    ports:
+      - "3000:8080"
+    volumes:
+      - open-webui:/app/backend/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: always
+    networks:
+      - ai_network
+
+volumes:
+  vllm_cache:
+  open-webui:

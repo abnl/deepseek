@@ -22,6 +22,8 @@
 
 This approach involves manually creating and connecting containers.
 
+**Consider *Ollama* folder**
+
 ### Step 1: Set up Ollama
 
 **Ollama** manages the model execution. Use this command to create and start the container:
