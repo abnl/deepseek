@@ -1,4 +1,3 @@
-# Usa uma imagem base compatível com CUDA
 # Usa a imagem base compatível com CUDA
 FROM nvidia/cuda:12.8.0-cudnn-devel-ubuntu24.04
 

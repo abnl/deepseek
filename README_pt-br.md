@@ -22,6 +22,8 @@ O **DeepSeek-R1** é um modelo de IA de ponta projetado para tarefas complexas, 
 
 Esta abordagem envolve criar e conectar os contêineres manualmente.
 
+**Considere a pasta *Ollama***
+
 ### Passo 1: Iniciar o Ollama
 
 O **Ollama** gerencia a execução do modelo. Use o seguinte comando para criar e iniciar o contêiner::
